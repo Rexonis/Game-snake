@@ -1,0 +1,25 @@
+@startuml
+
+Connection  --> DatabaseConnection
+DatabaseMetaData  -->  Connection
+ResultSet  -->  DatabaseMetaData
+
+class DatabaseConnection {
+  +URL: String
+  +USERNAME: String
+  +PASSWORD: String
+
+  +getConnection(): Connection
+}
+class Connection {
+  +getMetaData(): DatabaseMetaData
+}
+class DatabaseMetaData {
+  +getColumns(tableName: String, catalog: String): ResultSet
+}
+class ResultSet {
+  +next(): boolean
+  +getString(columnIndex: int): String
+}
+
+@enduml

@@ -1,0 +1,10 @@
+@startuml
+
+class GameState {
+  +MENU: int
+  +LEADERBOARD: int
+  +GAME: int
+  +OVER: int
+}
+
+@enduml

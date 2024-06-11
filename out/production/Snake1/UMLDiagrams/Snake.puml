@@ -1,0 +1,165 @@
+@startuml
+Snake --> GameState
+Snake --> ScoreCounter
+Snake --> Timer
+Snake --> Segment
+Snake --> JLabel
+Snake --> JButton
+Snake --> JTextField
+Snake --> JTable
+
+GameState --> String
+
+ScoreCounter --> String
+
+Segment --> int
+
+Score --> int
+Score --> String
+
+Timer --> void
+
+JButton --> ActionListener
+
+JLabel --> Color
+JLabel --> int
+
+JTextField --> Color
+JTextField --> int
+
+JTable --> Font
+JTable --> Color
+JTable --> int
+
+Exception --> void
+
+Connection --> PreparedStatement
+PreparedStatement --> ResultSet
+
+ResultSet --> boolean
+ResultSet --> int
+ResultSet --> String
+
+SwingUtilities --> Runnable
+
+Component --> void
+
+Font --> int
+Font --> float
+
+class Snake {
+  -gameState: GameState
+  -scoreCounter: ScoreCounter
+  -timer: Timer
+  -segments: Segment[]
+  -head: Segment
+  -vector: int[]
+  -gameOverText: JLabel
+  -scoreText: JLabel
+  -retry: JButton
+  -exit: JButton
+  -title: JLabel
+name: JTextField
+  -play: JButton
+  -leaderboard: JButton
+  -scoresView: JTable
+  -scores: List[Score]
+  -columnNames: String[]
+  -dataScores: Object[][]
+
+  +startGame(): void
+  +updateGame(): void
+  +paintComponent(g: Graphics): void
+  +getScoreFromDatabase(): List[Score]
+  +main(args: String[]): void
+}
+class GameState {
+  +GAME: String
+  +MENU: String
+  +LEADERBOARD: String
+}
+class Segment {
+  -x: int
+  -y: int
+}
+class ScoreCounter {
+  -score: int
+  -player: String
+
+  +getScore(): int
+  +getPlayer(): String
+  +reset(): void
+  +incrementScore(): void
+}
+class Score {
+  -score: int
+  -player: String
+}
+class Timer {
+  +start(): void
+}
+class JButton {
+  +addActionListener(e: ActionListener): void
+}
+class JLabel {
+  +setForeground(c: Color): void
+  +setBounds(x: int, y: int, width: int, height: int): void
+}
+class JTextField {
+  +setForeground(c: Color): void
+  +setBounds(x: int, y: int, width: int, height: int): void
+}
+class JTable {
+  +setFont(f: Font): void
+  +setForeground(c: Color): void
+  +setBounds(x: int, y: int, width: int, height: int): void
+}
+class List[T] {
+  +new ArrayList[Score](): ArrayList[Score]
+}
+class ArrayList[T] {
+  +new ArrayList[Score](): ArrayList[Score]
+}
+class Exception {
+  +printStackTrace(): void
+}
+class Connection {
+  +prepareStatement(query: String): PreparedStatement
+  +prepareStatement(query: String): PreparedStatement
+}
+class PreparedStatement {
+  +executeQuery(): ResultSet
+}
+class ResultSet {
+  +next(): boolean
+  +getInt(columnIndex: int): int
+  +getString(columnIndex: int): String
+}
+class SwingUtilities {
+  +invokeLater(r: Runnable): void
+}
+
+class Component {
+  +repaint(): void
+}
+class Color {
+  +RED: Color
+  +YELLOW: Color
+  +BLUE: Color
+}
+class Font {
+  +new Font(name: String, style: int, size: float): Font
+}
+class int {
+  +new int[]{1, 0}: int[]
+}
+class String {
+  +new String("Player"): String
+}
+class float {
+  +new float[]{3.0f}: float[]
+}
+class boolean {
+  +new boolean[]{true}: boolean[]
+}
+@enduml
